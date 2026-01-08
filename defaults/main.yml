@@ -1,7 +1,4 @@
 ---
-# defaults file for tomcat
-
-# Some "sane" defaults.
 tomcat_name: tomcat
 tomcat_directory: /opt
 tomcat_version: 11
