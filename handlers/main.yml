@@ -1,6 +1,4 @@
 ---
-# handlers file for tomcat
-
 - name: Systemctl daemon-reload
   ansible.builtin.systemd:
     daemon_reload: true

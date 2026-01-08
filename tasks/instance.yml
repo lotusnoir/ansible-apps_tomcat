@@ -109,8 +109,13 @@
     owner: "root"
     group: "root"
     mode: "0644"
-  notify:
-    - Restart tomcat instance
+
+- name: "instance | Start tomcat"
+  ansible.builtin.service:
+    name: "{{ instance.name | default(tomcat_name) }}.service"
+    state: "{{ tomcat_service_state }}"
+    enabled: "{{ tomcat_service_enabled }}"
+    daemon_reload: true
 
 - name: instance | Loop over wars
   ansible.builtin.include_tasks:

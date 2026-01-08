@@ -37,16 +37,6 @@ molecule_debian12:
   image: lotusnoir/molecule_play:2.18.11
   script:
     - MOLECULE_DISTRIB=debian12 molecule test
-molecule_debian11:
-  <<: *molecule_job_template
-  image: lotusnoir/molecule_play:2.18.11
-  script:
-    - MOLECULE_DISTRIB=debian11 molecule test
-molecule_debian10:
-  <<: *molecule_job_template
-  image: lotusnoir/molecule_play:2.15.13
-  script:
-    - MOLECULE_DISTRIB=debian10 molecule test
 molecule_debian13:
   <<: *molecule_job_template
   image: lotusnoir/molecule_play:2.18.11
@@ -59,21 +49,11 @@ molecule_oraclelinux10:
     - avx2
   script:
     - MOLECULE_DISTRIB=oraclelinux10 molecule test
-molecule_oraclelinux8:
-  <<: *molecule_job_template
-  image: lotusnoir/molecule_play:2.15.13
-  script:
-    - MOLECULE_DISTRIB=oraclelinux8 molecule test
 molecule_oraclelinux9:
   <<: *molecule_job_template
   image: lotusnoir/molecule_play:2.18.11
   script:
     - MOLECULE_DISTRIB=oraclelinux9 molecule test
-molecule_redhat8:
-  <<: *molecule_job_template
-  image: lotusnoir/molecule_play:2.15.13
-  script:
-    - MOLECULE_DISTRIB=redhat8 molecule test
 molecule_redhat9:
   <<: *molecule_job_template
   image: lotusnoir/molecule_play:2.18.11
@@ -86,23 +66,11 @@ molecule_rocky10:
     - avx2
   script:
     - MOLECULE_DISTRIB=rocky10 molecule test
-molecule_rocky8:
-  <<: *molecule_job_template
-  image: lotusnoir/molecule_play:2.15.13
-  script:
-    - MOLECULE_DISTRIB=rocky8 molecule test
 molecule_rocky9:
   <<: *molecule_job_template
   image: lotusnoir/molecule_play:2.18.11
   script:
     - MOLECULE_DISTRIB=rocky9 molecule test
-molecule_ubuntu20:
-  <<: *molecule_job_template
-  image: lotusnoir/molecule_play:2.18.11
-  variables:
-    MOLECULE_DOCKER_COMMAND: "--cap-add NET_ADMIN"
-  script:
-    - MOLECULE_DISTRIB=ubuntu20 molecule test
 molecule_ubuntu22:
   <<: *molecule_job_template
   image: lotusnoir/molecule_play:2.18.11
@@ -123,29 +91,17 @@ changelog:
   needs:
     - job: molecule_debian12
       optional: true
-    - job: molecule_debian11
-      optional: true
-    - job: molecule_debian10
-      optional: true
     - job: molecule_debian13
       optional: true
     - job: molecule_oraclelinux10
       optional: true
-    - job: molecule_oraclelinux8
-      optional: true
     - job: molecule_oraclelinux9
-      optional: true
-    - job: molecule_redhat8
       optional: true
     - job: molecule_redhat9
       optional: true
     - job: molecule_rocky10
       optional: true
-    - job: molecule_rocky8
-      optional: true
     - job: molecule_rocky9
-      optional: true
-    - job: molecule_ubuntu20
       optional: true
     - job: molecule_ubuntu22
       optional: true
